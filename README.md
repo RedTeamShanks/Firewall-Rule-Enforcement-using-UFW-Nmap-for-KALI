@@ -34,6 +34,25 @@ This project demonstrates how to use `ufw` (Uncomplicated Firewall) on a Linux m
 |HTTP| (Port 80, HyperText Transfer Protocol) |
 
 ---
+
+## Port Filtering and Usage Explanation
+
+When securing a network or system, controlling which ports are open or filtered is essential to reduce security risks and prevent unauthorized access. Below is a summary of the relevant ports, their purposes, and why some are filtered or blocked:
+
+| Port       | Status           | Service / Protocol                        | Purpose                                             | Reason for Filtering / Blocking                                      |
+|------------|------------------|------------------------------------------|-----------------------------------------------------|----------------------------------------------------------------------|
+| **21/tcp** | Filtered / Closed | FTP (File Transfer Protocol)              | Used for transferring files between client and server | FTP transmits data and credentials in plain text, making it vulnerable to interception. Blocking this port helps prevent unauthorized file transfers and reduces attack surface. |
+| **22/tcp** | Filtered          | SSH (Secure Shell)                        | Secure remote login and command execution           | Filtering SSH limits unauthorized remote access and brute-force attacks. It should only be accessible from trusted sources. |
+| **25/tcp** | Open              | SMTP (Simple Mail Transfer Protocol)     | Sending emails                                      | SMTP port needs to be open if the server is handling outgoing mail or mail relay services. |
+| **80/tcp** | Open              | HTTP (HyperText Transfer Protocol)       | Web traffic (serving websites)                      | HTTP port must be open to allow users to access hosted web services. |
+
+### Importance of Port Filtering
+
+- **Security:** Filtering or closing unused ports minimizes potential attack vectors by limiting exposure to known vulnerabilities.
+- **Access Control:** Helps restrict network traffic to only trusted and necessary services.
+- **System Performance:** Reduces resource consumption by disabling unnecessary services.
+
+---
 ## 🔍 Port Scan Results
 
 ### 🧪 Test 1: Before Applying UFW Rule
